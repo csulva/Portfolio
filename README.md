@@ -1,3 +1,3 @@
 # Portfolio
 
-## Coming soon! Code updated regularly
+Coming soon! Code updated regularly
