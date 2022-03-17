@@ -1,22 +1,49 @@
-let btn = document.getElementById('dark-mode');
-let isDarkMode = false;
+let btn = document.getElementById("dark-mode");
+let isDarkMode = window.localStorage.getItem('isDarkMode') === 'true';
+console.log(typeof isDarkMode);
+let btnsize = document.getElementById("text-size");
 
-function changeStyle (e) {
-    if (isDarkMode) {
-        window.localStorage.setItem('color', 'green')
-        document.body.style.color=window.localStorage.getItem('color');
-        document.body.style.backgroundColor='white';
-        btn.innerText='Toggle for dark mode';
-        // btn.style.hover.backgroundColor='yellow';
-        isDarkMode = false;
-    }
-    else {
-        document.body.style.color='white';
-        document.body.style.backgroundColor='grey';
-        btn.innerText='Revert to original settings';
-        isDarkMode = true;
-    }
+function changeStyle(e) {
+  if (isDarkMode) {
+    document.body.style.backgroundColor = "white";
+    document.body.style.color='black';
+    btn.innerText = "Toggle for dark mode";
+    // btn.style.hover.backgroundColor='yellow';  --> use mouse over event listener
+    window.localStorage.setItem("isDarkMode", false);
+    isDarkMode = false;
+  } else {
+    document.body.style.color = "white";
+    document.body.style.backgroundColor = "grey";
+    btn.innerText = "Revert to original settings";
+    window.localStorage.setItem("isDarkMode", true);
+    isDarkMode = true;
+  }
 }
 
-btn.addEventListener('click', changeStyle)
+function copyChangeStyle(e) {
+    if (isDarkMode) {
+      document.body.style.backgroundColor = "white";
+      document.body.style.color='black';
+      btn.innerText = "Toggle for dark mode";
+      // btn.style.hover.backgroundColor='yellow';  --> use mouse over event listener
+    } else {
+      document.body.style.color = "white";
+      document.body.style.backgroundColor = "grey";
+      btn.innerText = "Revert to original settings";
+    }
+  }
 
+
+function changeFontSize(e) {
+  if (btnsize.textContent == "+") {
+    document.body.style.fontSize += 2;
+  } else if (btnsize.textContent == "-") {
+    document.body.style.fontSize -= 2;
+  }
+}
+
+btn.addEventListener("click", changeStyle);
+btnsize.addEventListener("click", changeFontSize);
+document.addEventListener('DOMContentLoaded', (event) => {
+    copyChangeStyle();
+  })
