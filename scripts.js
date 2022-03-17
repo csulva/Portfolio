@@ -33,7 +33,6 @@ function copyChangeStyle(e) {
     }
   }
 
-
 function changeFontSize(e) {
   if (btnsize.textContent == "+") {
     document.body.style.fontSize += 2;
