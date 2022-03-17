@@ -3,9 +3,11 @@ let isDarkMode = false;
 
 function changeStyle (e) {
     if (isDarkMode) {
-        document.body.style.color='black';
+        window.localStorage.setItem('color', 'green')
+        document.body.style.color=window.localStorage.getItem('color');
         document.body.style.backgroundColor='white';
         btn.innerText='Toggle for dark mode';
+        // btn.style.hover.backgroundColor='yellow';
         isDarkMode = false;
     }
     else {
@@ -17,3 +19,4 @@ function changeStyle (e) {
 }
 
 btn.addEventListener('click', changeStyle)
+
