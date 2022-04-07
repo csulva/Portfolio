@@ -1,7 +1,9 @@
 let btn = document.getElementById("dark-mode");
 let isDarkMode = window.localStorage.getItem('isDarkMode') === 'true';
 console.log(typeof isDarkMode);
-let btnsize = document.getElementById("text-size");
+let btnAdd = document.getElementById("text-plus");
+let btnMinus = document.getElementById("text-minus")
+let fontSize = 1;
 
 function changeStyle(e) {
   if (isDarkMode) {
@@ -33,16 +35,19 @@ function copyChangeStyle(e) {
     }
   }
 
-function changeFontSize(e) {
-  if (btnsize.textContent == "+") {
-    document.body.style.fontSize += 2;
-  } else if (btnsize.textContent == "-") {
-    document.body.style.fontSize -= 2;
-  }
+function changeFontSize(size=0.1) {
+    fontSize += size;
+    document.body.style.fontSize = fontSize.toString() + 'rem';
 }
 
+
 btn.addEventListener("click", changeStyle);
-btnsize.addEventListener("click", changeFontSize);
+btnAdd.addEventListener("click", () => {
+  changeFontSize(0.1)
+});
+btnMinus.addEventListener("click", () => {
+  changeFontSize(-0.1)
+})
 document.addEventListener('DOMContentLoaded', (event) => {
     copyChangeStyle();
   })
