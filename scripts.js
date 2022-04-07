@@ -21,7 +21,7 @@ function changeStyle(e) {
 }
 
 function copyChangeStyle(e) {
-    if (isDarkMode) {
+    if (!isDarkMode) {
       document.body.style.backgroundColor = "white";
       document.body.style.color='black';
       btn.innerText = "Toggle for dark mode";
